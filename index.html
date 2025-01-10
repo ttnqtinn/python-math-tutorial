@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="เรียนรู้แนวคิดทางคณิตศาสตร์ด้วย Python อย่างง่ายพร้อมตัวอย่าง">
+    <meta name="keywords" content="Python, คณิตศาสตร์, tutorial, เรียนรู้ Python คณิตศาสตร์">
+    <meta name="author" content="ชื่อของคุณ">
+    <title>บทเรียน Python คณิตศาสตร์: เรียนรู้ Python สำหรับการคำนวณทางคณิตศาสตร์</title>
+    <link rel="stylesheet" href="style.css"> <!-- เชื่อมโยงไฟล์ CSS -->
+</head>
+<body>
+
+    <header>
+        <h1>บทเรียน Python คณิตศาสตร์</h1>
+        <nav>
+            <ul>
+                <li><a href="#intro">บทนำ</a></li>
+                <li><a href="#basic-operations">การคำนวณพื้นฐาน</a></li>
+                <li><a href="#math-functions">ฟังก์ชันทางคณิตศาสตร์</a></li>
+                <li><a href="#exercises">แบบฝึกหัด</a></li>
+                <li><a href="https://github.com/ttnqtinn/python-math-tutorial" target="_blank">โค้ดบน GitHub</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <section id="intro">
+            <h2>บทนำ</h2>
+            <p>ในบทเรียนนี้ คุณจะได้เรียนรู้วิธีการใช้ Python สำหรับการคำนวณทางคณิตศาสตร์</p>
+            <img src="https://www.example.com/images/python_intro.jpg" alt="Python Introduction">
+        </section>
+
+        <section id="basic-operations">
+            <h2>การคำนวณทางคณิตศาสตร์พื้นฐาน</h2>
+            <p>เราจะเริ่มต้นด้วยการคำนวณพื้นฐานใน Python เช่น การบวก, การลบ, การคูณ และการหาร</p>
+            <h3>ตัวอย่าง: การบวกใน Python</h3>
+            <pre>
+                <code>
+# การบวก
+a = 10
+b = 5
+result = a + b
+print(result)  # ผลลัพธ์: 15
+                </code>
+            </pre>
+            <p>ในตัวอย่างข้างต้น เราได้ทำการบวกสองตัวเลข</p>
+            <img src="https://www.example.com/images/addition_example.jpg" alt="Addition Example">
+        </section>
+
+        <section id="math-functions">
+            <h2>การใช้ฟังก์ชันทางคณิตศาสตร์ใน Python</h2>
+            <p>Python มีห้องสมุด math ที่ให้เราสามารถทำการคำนวณที่ซับซ้อนได้มากขึ้น</p>
+            <h3>ตัวอย่าง: การหาค่ารากที่สอง</h3>
+            <pre>
+                <code>
+import math
+number = 25
+result = math.sqrt(number)
+print(result)  # ผลลัพธ์: 5.0
+                </code>
+            </pre>
+            <p>ตัวอย่างนี้แสดงวิธีการคำนวณค่ารากที่สองโดยใช้ฟังก์ชัน sqrt จากห้องสมุด math</p>
+            <img src="https://www.example.com/images/square_root_example.jpg" alt="Square Root Example">
+        </section>
+
+        <section id="exercises">
+            <h2>แบบฝึกหัด</h2>
+            <p>ตอนนี้เรามาลองทำแบบฝึกหัดกันเถอะ!</p>
+            <ul>
+                <li><a href="#exercise1">แบบฝึกหัด 1: คำนวณผลบวกของสองตัวเลข</a></li>
+                <li><a href="#exercise2">แบบฝึกหัด 2: หาค่ารากที่สองของตัวเลข</a></li>
+            </ul>
+
+            <section id="exercise1">
+                <h3>แบบฝึกหัด 1: คำนวณผลบวกของสองตัวเลข</h3>
+                <form id="exercise-form1">
+                    <label for="num1">กรุณาใส่ตัวเลขแรก: </label>
+                    <input type="number" id="num1" required>
+                    <label for="num2">กรุณาใส่ตัวเลขที่สอง: </label>
+                    <input type="number" id="num2" required>
+                    <button type="submit">ส่งข้อมูล</button>
+                </form>
+                <p id="result1"></p>
+            </section>
+
+            <section id="exercise2">
+                <h3>แบบฝึกหัด 2: หาค่ารากที่สองของตัวเลข</h3>
+                <form id="exercise-form2">
+                    <label for="num">กรุณาใส่ตัวเลข: </label>
+                    <input type="number" id="num" required>
+                    <button type="submit">ส่งข้อมูล</button>
+                </form>
+                <p id="result2"></p>
+            </section>
+        </section>
+    </div>
+
+    <footer>
+        <p>บทเรียน Python คณิตศาสตร์ © 2025</p>
+        <p>ดูโค้ดบน <a href="https://github.com/ttnqtinn/python-math-tutorial" target="_blank">GitHub</a></p>
+    </footer>
+
+    <script>
+        // JavaScript code for exercises
+
+        // Exercise 1: Calculate the sum of two numbers
+        document.getElementById('exercise-form1').addEventListener('submit', function(e) {
+            e.preventDefault();
+            var num1 = parseFloat(document.getElementById('num1').value);
+            var num2 = parseFloat(document.getElementById('num2').value);
+            var result = num1 + num2;
+            document.getElementById('result1').textContent = "ผลบวกคือ: " + result;
+        });
+
+        // Exercise 2: Find the square root of a number
+        document.getElementById('exercise-form2').addEventListener('submit', function(e) {
+            e.preventDefault();
+            var num = parseFloat(document.getElementById('num').value);
+            var result = Math.sqrt(num);
+            document.getElementById('result2').textContent = "ค่ารากที่สองคือ: " + result;
+        });
+    </script>
+
+</body>
+</html>
