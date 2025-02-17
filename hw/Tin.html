@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Product Selection</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #e3f2fd;
+        }
+        .container {
+            width: 90%;
+            max-width: 600px;
+            padding: 20px;
+            background-color: #ffffff;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            text-align: center;
+        }
+        h1 {
+            color: #007BFF;
+        }
+        .product {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            margin: 10px 0;
+            background: #f8f9fa;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .product img {
+            width: 50px;
+            height: 50px;
+            border-radius: 5px;
+            margin-right: 10px;
+        }
+        .product-info {
+            display: flex;
+            align-items: center;
+        }
+        .product button {
+            padding: 8px 12px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .product button:hover {
+            background-color: #218838;
+        }
+        .cart {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 8px;
+            background-color: #ffffff;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .cart ul {
+            list-style: none;
+            padding: 0;
+        }
+        .cart li {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px;
+            background: #d4edda;
+            margin: 5px 0;
+            border-radius: 6px;
+            color: #155724;
+        }
+        .cart button {
+            background-color: #dc3545;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .cart button:hover {
+            background-color: #c82333;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>สินค้าทั้งหมด</h1>
+        <div class="product" data-product="stussy1" data-price="500">
+            <div class="product-info">
+                <img src="c:\Users\WINDOWS\Downloads\stussy1.jpg" alt="stussy1">
+                <span>stussy1 - $500</span>
+            </div>
+            <button class="add-to-cart">Add to Cart</button>
+        </div>
+        <div class="product" data-product="stussy2" data-price="700">
+            <div class="product-info">
+                <img src="c:\Users\WINDOWS\Downloads\stussy2.jpg" alt="stussy2">
+                <span>stussy2 - $700</span>
+            </div>
+            <button class="add-to-cart">Add to Cart</button>
+        </div>
+        <div class="product" data-product="stussy3" data-price="900">
+            <div class="product-info">
+                <img src="c:\Users\WINDOWS\Downloads\stussy3.webp" alt="stussy3">
+                <span>stussy3 - $900</span>
+            </div>
+            <button class="add-to-cart">Add to Cart</button>
+        </div>
+        <h2>ตะกร้าของคุณ</h2>
+        <div class="cart" id="cart">
+            <p>ไม่มีสินค้าในตะกร้า</p>
+        </div>
+        <h3>ราคาทั้งหมด: $<span id="total-price">0</span></h3>
+    </div>
+
+    <script>
+        let cart = [];
+        let totalPrice = 0;
+
+        document.querySelectorAll('.add-to-cart').forEach(button => {
+            button.addEventListener('click', function() {
+                let productElement = this.parentElement;
+                let product = productElement.getAttribute('data-product');
+                let price = parseInt(productElement.getAttribute('data-price'));
+                cart.push({ name: product, price: price });
+                totalPrice += price;
+                updateCart();
+            });
+        });
+
+        function updateCart() {
+            const cartElement = document.getElementById('cart');
+            const totalElement = document.getElementById('total-price');
+            cartElement.innerHTML = '';
+            if (cart.length === 0) {
+                cartElement.innerHTML = '<p>No items in cart</p>';
+                totalElement.textContent = '0';
+            } else {
+                let list = document.createElement('ul');
+                cart.forEach((item, index) => {
+                    let listItem = document.createElement('li');
+                    listItem.textContent = `${item.name} - $${item.price}`;
+                    let removeButton = document.createElement('button');
+                    removeButton.textContent = 'Remove';
+                    removeButton.onclick = function() {
+                        totalPrice -= item.price;
+                        cart.splice(index, 1);
+                        updateCart();
+                    };
+                    listItem.appendChild(removeButton);
+                    list.appendChild(listItem);
+                });
+                cartElement.appendChild(list);
+                totalElement.textContent = totalPrice;
+            }
+        }
+    </script>
+</body>
+</html>
